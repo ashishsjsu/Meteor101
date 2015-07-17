@@ -1,13 +1,7 @@
-<head>
-  <title>Todo List</title>
-</head>
-
 <body>
     <div class="container">
 
-    
-        <header>
-    
+     <header>
             <div class="row">
                 <div class="col-md-6">
                     <img src="/images/todolist_logo.gif" class="logo" />    
@@ -43,57 +37,3 @@
     </div>
 </body>
 
-<template name="task">
-
-        <li class="{{#if checked}}checked{{/if}} {{#if private}}private{{/if}}">
-
-    <div class="row">
-        <div class="col-md-8">
-            <input type="checkbox" checked="{{checked}}" class="toggle-checked">
-                
-                {{#if isOwner}}
-                    <button class="toggle-private">
-                    {{#if private}}
-                        Private
-                    {{else}}
-                        Public
-                    {{/if}}
-                    </button>
-                {{/if}}
-            
-            <span class="text"><strong>{{username}}</strong> - {{text}}</span>
-
-        </div>
-
-        <div class="col-md-4">
-            <button class="btn btn-default btn-sm edit" data-toggle="modal" data-target="#{{this._id}}">
-                <span class="glyphicon glyphicon-pencil"></span>
-            </button>
-            <button class="delete">&times;</button>
-        </div>
-    </div>
-       </li>
-
-
-<div class="modal fade" id="{{this._id}}">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Update Task</h4>
-        </div>
-        
-        <div class="modal-body">
-                 <textarea id="{{this._id}}" class="updatetask">{{text}}</textarea>               
-        </div>
-
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" id="save" class="btn btn-primary">Save changes</button>
-        </div>
-    </div>
-  </div>
-</div>
-
-</template>

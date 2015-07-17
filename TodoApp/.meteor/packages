@@ -9,3 +9,5 @@ accounts-ui
 accounts-password
 twbs:bootstrap
 natestrauser:x-editable-bootstrap
+email
+iron:router

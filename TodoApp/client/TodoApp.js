@@ -1,7 +1,16 @@
-    //template helpers
-    
+    //configure routes
+
+    Router.configure({
+        layoutTemplate: 'main'
+    })
+
+
+
+    //subscribe to tasks that server publishes
     Meteor.subscribe('tasks');
     
+    //template helpers
+
     Template.body.helpers({
         
          tasks: function(){
