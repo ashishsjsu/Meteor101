@@ -29,6 +29,18 @@ Meteor.methods({
             username: Meteor.user().username //username of logged in user
         });
     },
+
+    updateTask: function(taskId, text){
+
+        var task = Tasks.findOne(taskId); 
+        
+        if(task.private && task.owner != Meteor.userId()){
+            //if task is private, only owner can delete it 
+            throw new Meteor.Error("not-authorized");
+        }
+
+        Tasks.update(taskId, { $set: {text: text}});
+    },
     
     deleteTask: function(taskId){
         

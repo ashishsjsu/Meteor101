@@ -26,7 +26,7 @@ body {
 
 header {
   background: #d2edf4;
-  background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
+  background-image: linear-gradient(to bottom, #104385, #e1e5f0 100%);
   padding: 20px 15px 15px 15px;
   position: relative;
 }
@@ -130,6 +130,7 @@ header .hide-completed {
 .logo{
   height: 100px;
   width: 300px;
+  border-radius: 8px;
 }  
 
 .edit{
@@ -138,14 +139,11 @@ header .hide-completed {
   left: 8em;
 }
 
-#updaterow{
+#updatetask{
 
   position: relative;
-  top: 2em;
   left: 2em;
-}
+  border-radius: 8px;
+  width: 30%;
 
-#modaldialog{
-
-  height: 10em;
 }

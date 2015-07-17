@@ -65,14 +65,16 @@
     });
     
 
+    /*
     Template.task.onRendered(function(){
          console.log("render");
 
-        $(document).on('click', '#save', function(){
-            console.log("hey");
+        $(document).on('click', '#save', function(event){
+            event.preventDefault();
+            alert("hey " + event);
         })
     })
-    
+    */
     //define events on the template named 'task'
     
     Template.task.events({
@@ -83,12 +85,27 @@
         },
         
         'click .toggle-private':function(){
+
+            console.log(this);
             Meteor.call('setPrivate', this._id, !this.private);
         },
                 
         'click .delete': function(){
             Meteor.call('deleteTask', this._id);
             //Tasks.remove(this._id);
+        },
+
+        'click .modal-footer #save': function(){
+            
+            //update the task
+            console.log(this);
+
+            //get updated task text from textarea
+            var text = $('#' + this._id +' .updatetask')[0].value;
+            //call method to update DB
+            Meteor.call('updateTask', this._id, text);
+            //close the modal
+            $('.modal').modal('hide');
         }
     })
     
