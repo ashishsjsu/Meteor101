@@ -1,0 +1,92 @@
+<head>
+  <title>Todo List</title>
+</head>
+
+<body>
+    <div class="container">
+
+    
+        <header>
+    
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="/images/todolist_logo.gif" class="logo" />    
+                </div>          
+                <div class="col-md-6">
+                    <div style="float: right">
+                        {{> loginButtons}}
+                    </div>
+                    <label class="hide-completed">
+                        <input type="checkbox" checked="{{hideCompleted}}">
+                             <small>Hide Completed Tasks</small>
+                        </label>
+                </div>     
+            </div>
+
+            <div class="row">
+                {{#if currentUser}}
+                <form class="new-task">
+                    <input type="text" name="text" placeholder="Type to add a new task"/>
+                </form>
+                {{/if}}
+            </div>
+        
+        </header>
+      
+
+        {{#each tasks}}
+            {{> task}}
+        {{/each}}
+                
+    </div>
+</body>
+
+<template name="task">
+
+        <li class="{{#if checked}}checked{{/if}} {{#if private}}private{{/if}}">
+
+    <div class="row">
+        <div class="col-md-8">
+            <input type="checkbox" checked="{{checked}}" class="toggle-checked">
+                
+                {{#if isOwner}}
+                    <button class="toggle-private">
+                    {{#if private}}
+                        Private
+                    {{else}}
+                        Public
+                    {{/if}}
+                    </button>
+                {{/if}}
+            
+            <span class="text"><strong>{{username}}</strong> - {{text}}</span>
+
+        </div>
+
+        <div class="col-md-4">
+            <button class="btn btn-default btn-sm edit" data-toggle="modal" data-target=".bs-example-modal-sm">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </button>
+            <button class="delete">&times;</button>
+        </div>
+    </div>
+       </li>
+
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content" id="modaldialog">
+        <div class="row" id="updaterow">
+            <div class="col-sm-6">
+                        <textarea id="updatetask">{{text}}</textarea>
+            </div>
+            <div class="col-sm-6">
+                <button class="btn btn-sm btn-primary" id="save">OK</button>
+            </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+</template>
